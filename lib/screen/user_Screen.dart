@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:test_3/model/user_list_model.dart';
 import 'package:test_3/network/network_service.dart';
-import 'package:test_3/screen/update_screen.dart';
 
 
 class UserList extends StatefulWidget {
@@ -49,14 +48,7 @@ class _UserListState extends State<UserList> {
                 children: [
                   ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>UpdateScreen(
-                          name: _userLIstModel?.data?[index].name ?? 'unknown',
-                          email:
-                          _userLIstModel?.data?[index].email ?? 'unknown',
-                          id: _userLIstModel?.data?[index].id ?? 0
-                          ,
-                        )
-                        ));
+
                       },
                       child: Text("Update"))
                 ],
