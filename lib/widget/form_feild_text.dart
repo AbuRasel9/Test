@@ -14,7 +14,7 @@ class From_Feild_Text extends StatelessWidget {
     return TextFormField(
 
       controller: textController,
-      validator: (String?value){
+      validator: (String? value){
         if(value?.isEmpty ?? true){
           return "Enter $errorText";
         }

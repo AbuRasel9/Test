@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:test_3/utils/token.dart';
 
 class NetworkServices {
   //get data form api
@@ -8,7 +9,7 @@ class NetworkServices {
     http.Response response = await http.get(Uri.parse(url), headers: {
       "Content-Type": "application/json",
       "Accept": "application/json",
-      'Authorization': 'Bearer 4c2d4a89-15a6-48ce-9df3-5273dd5b4b99',
+      'Authorization': 'Bearer ${userData.token}',
     });
     print(response.body);
     if (response.statusCode == 200) {
@@ -26,7 +27,7 @@ class NetworkServices {
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
-          'Authorization': 'Bearer 4c2d4a89-15a6-48ce-9df3-5273dd5b4b99'
+          'Authorization': 'Bearer ${userData.token}'
         },
         body:jsonEncode(body));
 

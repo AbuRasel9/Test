@@ -14,6 +14,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
+
   final emailController=TextEditingController();
   final passwordController=TextEditingController();
   @override
@@ -41,14 +43,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         "password":passwordController.text
                       }
 
-                      );
+                  );
                   if(response["message"]=="success"){
-                    userData.token=response["token"];
-                    print(userData.token);
+                    final result=userData.token=response["data"]["Token"];
+                    print("User token ${result}");
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Successfull")));
-                     Navigator.push(context, MaterialPageRoute(builder: (context)=>UserList()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>UserList()));
+
+                  }else{
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Not Successfull please enter correct password and email")));
+
+
 
                   }
+
 
 
 
